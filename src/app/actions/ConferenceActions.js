@@ -387,7 +387,7 @@ export class Actions {
       };
 
       if (isListener || (participants.isWebinar && !isAdmin)) {
-        return openSession(userInfo).then(() => {
+        return this.openSession(userInfo).then(() => {
           return VoxeetSDK.conference
             .create({
               alias: conferenceAlias,
@@ -485,7 +485,7 @@ export class Actions {
         this.setVideoConstraints(constraints, videoRatio, dispatch);
         if (constraints.audio) {
           constraints = this.setInputAudio(constraints, dispatch);
-          return openSession(userInfo).then(() => {
+          return this.openSession(userInfo).then(() => {
             return VoxeetSDK.conference
               .create({
                 alias: conferenceAlias,
@@ -595,7 +595,7 @@ export class Actions {
       }
       if (bowser.msie) constraints.video = false;
 
-      return openSession(userInfo).then(() => {
+      return this.openSession(userInfo).then(() => {
         return VoxeetSDK.conference
           .create({
             alias: conferenceAlias,
