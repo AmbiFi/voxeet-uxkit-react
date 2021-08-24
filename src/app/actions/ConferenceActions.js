@@ -341,10 +341,13 @@ export class Actions {
   static openSession(userInfo) {
     return new Promise((resolve) => {
       try {
-        // VoxeetSDK.session.open(userInfo)
+        VoxeetSDK.session.open(userInfo)
+        global.openedSession = true;
 
         resolve();
       } catch (err) {
+        global.openedSession = false;
+
         // Already have a session, so just continue!
         resolve();
       }
@@ -976,7 +979,9 @@ export class Actions {
       } = getState();
       if (controls.closeSessionAtHangUp) {
         this._removeListeners().then(() => {
-          VoxeetSDK.session.close();
+          if (global.openedSession) {
+            VoxeetSDK.session.close();
+          }
         });
       }
     };
