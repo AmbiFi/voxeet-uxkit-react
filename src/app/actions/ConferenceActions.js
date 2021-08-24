@@ -341,7 +341,9 @@ export class Actions {
   static openSession(userInfo) {
     return new Promise((resolve) => {
       try {
-        // VoxeetSDK.session.open(userInfo)
+        if (!VoxeedSDK.session) {
+          VoxeetSDK.session.open(userInfo);
+        }
 
         resolve();
       } catch (err) {
