@@ -229,7 +229,7 @@ class ConferenceRoom extends Component {
         initialized.then(() =>
           this.props.dispatch(ConferenceActions.joinDemo())
         );
-      } /*else if (autoJoin && conferenceId != null) {
+      } else if (autoJoin && conferenceId != null) {
         const constraintsUpdated = {
           video: constraints.video,
           audio: constraints.audio,
@@ -252,7 +252,7 @@ class ConferenceRoom extends Component {
             )
           )
         );
-      } */ else if (
+      } else if (
         autoJoin &&
         conferenceReplayId == null
       ) {
