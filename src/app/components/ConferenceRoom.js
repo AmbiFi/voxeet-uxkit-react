@@ -226,10 +226,12 @@ class ConferenceRoom extends Component {
       ControlsActions.setSimulcast(simulcast);
 
       if (isDemo) {
+        console.log("!@!@!@ HERE1");
         initialized.then(() =>
           this.props.dispatch(ConferenceActions.joinDemo())
         );
       } else if (autoJoin && conferenceId != null) {
+        console.log("!@!@!@ HERE2");
         const constraintsUpdated = {
           video: constraints.video,
           audio: constraints.audio,
@@ -256,6 +258,7 @@ class ConferenceRoom extends Component {
         autoJoin &&
         conferenceReplayId == null
       ) {
+        console.log("!@!@!@ HERE3");
         // Autojoin when entering in fullscreen mode
         initialized.then(() => {
 
